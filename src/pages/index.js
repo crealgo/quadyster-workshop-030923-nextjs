@@ -4,6 +4,7 @@ import { IconButton, TextField } from "@mui/material"
 import {styled} from "@mui/material/styles"
 import { KeyboardArrowDown, NotificationsOutlined } from "@mui/icons-material"
 import { HeaderBar } from "../components/HeaderBar"
+import { capitalCase } from "change-case"
 import NextImage from 'next/image';
 
 const MainContent = styled('main')`
@@ -29,10 +30,16 @@ export const Home = (props) => {
      </HeaderBar>
       <MainContent>
         {props.statistics.map((s, sIndex) => (
-          <div key={sIndex}>{s.key}</div>
+          <div key={sIndex}>
+            <h3>Stat</h3>
+            {s.key}
+          </div>
         ))}
-        <div>{'Chart'}</div>
         <div>
+        <h3>Chart</h3>
+        </div>
+        <div>
+          <h3>Doctor Profile</h3>
           <img src={props.doctorProfile.image} alt={props.doctorProfile.name} />
           <p>{props.doctorProfile.name}</p>
           <p>{props.doctorProfile.job}</p>
@@ -41,6 +48,48 @@ export const Home = (props) => {
               <div key={metaIndex}>{meta.name} : {meta.stat}</div>
             ))}
           </div>
+        </div>
+        <div>
+          <h3>Appointment Requests</h3>
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(props.tableData[0]).map((dataKey, dataIndex) => (
+                  <th key={dataIndex}>{capitalCase(dataKey)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {props.tableData.map((tData, tIndex) => (
+                <tr key={tIndex}>
+                  {Object.keys(tData).map((dataKey, dataIndex) => (
+                    <td key={dataIndex}>{tData[dataKey]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Appointment Requests</h3>
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(props.tableData[0]).map((dataKey, dataIndex) => (
+                  <th key={dataIndex}>{capitalCase(dataKey)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {props.tableData.map((tData, tIndex) => (
+                <tr key={tIndex}>
+                  {Object.keys(tData).map((dataKey, dataIndex) => (
+                    <td key={dataIndex}>{tData[dataKey]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </MainContent>
     </>
