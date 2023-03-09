@@ -1,17 +1,11 @@
 import Button from "@mui/material/Button"
 import { navigationItems, tableData, statistics, getProfile } from '../data'
-import { IconButton, TextField } from "@mui/material"
-import {styled} from "@mui/material/styles"
+import { IconButton, TextField, Card, CardContent } from "@mui/material"
 import { KeyboardArrowDown, NotificationsOutlined } from "@mui/icons-material"
 import { HeaderBar } from "../components/HeaderBar"
 import { capitalCase } from "change-case"
-import NextImage from 'next/image';
-
-const MainContent = styled('main')`
-  display: grid;
-  padding: var(--content-spacing);
-  gap: var(--content-spacing);
-`
+import { MainContent } from "../components/MainContent"
+import StatCard from "../components/StatCard"
 
 export const Home = (props) => {
   // console.log({props});
@@ -30,10 +24,12 @@ export const Home = (props) => {
      </HeaderBar>
       <MainContent>
         {props.statistics.map((s, sIndex) => (
-          <div key={sIndex}>
-            <h3>Stat</h3>
-            {s.key}
-          </div>
+          <StatCard
+            key={sIndex}
+            statistic={'100%'}
+            label={s.key}
+            icon={<NotificationsOutlined />}
+          />
         ))}
         <div>
         <h3>Chart</h3>
