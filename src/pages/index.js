@@ -2,6 +2,7 @@ import Button from "@mui/material/Button"
 import { navigationItems, tableData, statistics, getProfile } from '../data'
 
 export const Home = (props) => {
+  console.log({props});
   return (
     <div>
      <Button>{'Hello'}</Button>
@@ -9,9 +10,15 @@ export const Home = (props) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = () => {
   return {
-    props: {}
+    props: {
+      navigationItems,
+      tableData,
+      statistics,
+      userProfile: getProfile(),
+      doctorProfile: getProfile(),
+    }
   }
 }
 

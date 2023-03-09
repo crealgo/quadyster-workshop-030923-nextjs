@@ -12,8 +12,8 @@ export const tableData = chance.n(() => ({
     avatar: chance.avatar(),
     name: chance.name(),
     number: chance.phone(),
-    date: chance.date(),
-    time: chance.time(),
+    date: chance.date().toString(),
+    time: chance.timestamp(),
     accepted: chance.bool()
 }), 6)
 
@@ -27,7 +27,7 @@ export const getProfile = () => ({
     image: chance.avatar(),
     name: chance.name(),
     job: chance.word(),
-    meta: chance.n(({
+    meta: chance.n(() => ({
         name: chance.word(),
         stat: chance.natural(),
     }), 3)
