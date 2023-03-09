@@ -7,8 +7,13 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <GlobalStyles styles={css`
+        :root {
+          --small-padding: 0.5rem;
+          --content-spacing: 1rem;
+        }
+
         body {
-          background-color: #CCCCCC
+          background-color: #CCCCCC;
         }
       `} />
       <Component {...pageProps} />
